@@ -111,10 +111,19 @@ const VSCodeIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const goTo = (id: string) =>
-  document
-    .getElementById(id)
-    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+const goTo = (id: string) => {
+  const el = document.getElementById(id);
+  if (el) {
+    const header = document.querySelector("header");
+    const headerHeight = header ? header.offsetHeight + 16 : 80;
+    const elementPosition = el.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+    window.scrollTo({
+      top: Math.max(0, offsetPosition),
+      behavior: "smooth",
+    });
+  }
+};
 
 /* ------------------------------------------------------------------ */
 /* Hero                                                                */
@@ -123,7 +132,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-28 pb-16 sm:pt-40 sm:pb-28 px-4 sm:px-6 overflow-hidden sm:overflow-visible"
+      className="relative pt-24 pb-8 sm:pt-40 sm:pb-28 px-4 sm:px-6 overflow-hidden sm:overflow-visible scroll-mt-24"
     >
       <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* Left */}
@@ -325,7 +334,7 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="px-4 sm:px-6">
+    <section className="py-2 sm:py-6 px-4 sm:px-6">
       <div className="mx-auto max-w-7xl">
         <div className="glass rounded-3xl border border-white/5 p-4 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-6">
           {stats.map((s, i) => (
@@ -382,10 +391,14 @@ function SectionHeader({
       <p className="text-xs uppercase tracking-[0.2em] text-[var(--accent-cyan)] font-semibold">
         {eyebrow}
       </p>
-      <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+      <h2 className="mt-2.5 sm:mt-3 font-display text-2xl sm:text-4xl md:text-5xl font-bold leading-tight">
         {title}
       </h2>
-      {desc && <p className="mt-4 text-muted-foreground">{desc}</p>}
+      {desc && (
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground">
+          {desc}
+        </p>
+      )}
     </motion.div>
   );
 }
@@ -395,8 +408,11 @@ function SectionHeader({
 /* ------------------------------------------------------------------ */
 export function About() {
   return (
-    <section id="about" className="py-24 sm:py-32 px-4 sm:px-6">
-      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 items-start">
+    <section
+      id="about"
+      className="scroll-mt-20 sm:scroll-mt-28 py-8 sm:py-24 px-4 sm:px-6"
+    >
+      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
         <div>
           <SectionHeader
             eyebrow="About Me"
@@ -407,33 +423,33 @@ export function About() {
               </>
             }
           />
-          <p className="mt-6 text-muted-foreground leading-relaxed max-w-lg">
+          <p className="mt-4 sm:mt-6 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg">
             I'm a passionate WordPress developer with a sharp eye for detail and
             a love for creating seamless digital experiences. I combine
             creativity and technology to build websites that are fast,
             responsive, and genuinely user-friendly.
           </p>
-          <p className="mt-4 text-muted-foreground leading-relaxed max-w-lg">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg">
             Over the last one years I've shipped 80+ projects for startups,
             agencies, and growing businesses — from luxury real-estate platforms
             to high-conversion WooCommerce stores.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-7 sm:mt-8 flex flex-wrap gap-3">
             <a
               href="#"
               onClick={(e) => {
                 e.preventDefault();
                 goTo("contact");
               }}
-              className="inline-flex items-center gap-2 rounded-xl glass border border-white/10 px-5 py-3 text-sm font-medium hover:border-[var(--accent-cyan)]/40 hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center gap-2 rounded-xl glass border border-white/10 px-5 py-3 text-sm font-medium hover:border-[var(--accent-cyan)]/40 hover:-translate-y-0.5 transition-all active:scale-[0.98]"
             >
               <Download className="h-4 w-4 text-[var(--accent-cyan)]" />{" "}
               Download Resume
             </a>
             <button
               onClick={() => goTo("experience")}
-              className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium text-muted-foreground hover:text-foreground"
+              className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium text-muted-foreground hover:text-foreground active:scale-[0.98]"
             >
               More About Me <ArrowRight className="h-4 w-4" />
             </button>
@@ -445,7 +461,7 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="glass rounded-3xl border border-white/5 p-6 sm:p-8 space-y-4"
+          className="glass rounded-3xl border border-white/5 p-4 sm:p-7 space-y-3.5 sm:space-y-4"
         >
           {[
             { icon: Smile, label: "Name", value: "Md. Rayhan Kobir" },
@@ -550,7 +566,10 @@ const radarAxes = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 sm:py-32 px-4 sm:px-6">
+    <section
+      id="skills"
+      className="scroll-mt-20 sm:scroll-mt-28 py-8 sm:py-28 px-4 sm:px-6"
+    >
       <div className="mx-auto max-w-7xl">
         {/* Centered header */}
         <motion.div
@@ -577,7 +596,7 @@ export function Skills() {
         </motion.div>
 
         {/* Two-card row */}
-        <div className="mt-14 grid lg:grid-cols-5 gap-6">
+        <div className="mt-7 sm:mt-14 grid lg:grid-cols-5 gap-5 sm:gap-6">
           {/* Skills Overview */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -902,7 +921,10 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="py-24 sm:py-32 px-4 sm:px-6">
+    <section
+      id="services"
+      className="scroll-mt-20 sm:scroll-mt-28 py-8 sm:py-28 px-4 sm:px-6"
+    >
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Services"
@@ -913,7 +935,7 @@ export function Services() {
             </>
           }
         />
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="mt-7 sm:mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {services.map((s, i) => (
             <motion.div
               key={s.title}
@@ -974,7 +996,10 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 sm:py-32 px-4 sm:px-6">
+    <section
+      id="projects"
+      className="scroll-mt-20 sm:scroll-mt-28 py-8 sm:py-28 px-4 sm:px-6"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
           <SectionHeader
@@ -994,7 +1019,7 @@ export function Projects() {
           </a>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-7 sm:mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {projects.map((p, i) => (
             <ProjectCard key={p.title} {...p} delay={i * 0.08} />
           ))}
@@ -1130,7 +1155,10 @@ const experience = [
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 sm:py-32 px-4 sm:px-6">
+    <section
+      id="experience"
+      className="scroll-mt-20 sm:scroll-mt-28 py-8 sm:py-28 px-4 sm:px-6"
+    >
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Experience"
@@ -1142,9 +1170,9 @@ export function Experience() {
           }
         />
 
-        <div className="mt-14 relative">
+        <div className="mt-7 sm:mt-14 relative">
           <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--accent-cyan)]/60 via-white/10 to-transparent -translate-x-px" />
-          <div className="space-y-10">
+          <div className="space-y-6 sm:space-y-10">
             {experience.map((e, i) => (
               <motion.div
                 key={e.year + e.role}
@@ -1218,7 +1246,7 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section className="py-24 sm:py-32 px-4 sm:px-6">
+    <section className="scroll-mt-20 sm:scroll-mt-28 py-8 sm:py-28 px-4 sm:px-6">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="What Clients Say"
@@ -1230,7 +1258,7 @@ export function Testimonials() {
           }
         />
 
-        <div className="mt-12 grid md:grid-cols-3 gap-5">
+        <div className="mt-7 sm:mt-12 grid md:grid-cols-3 gap-4 sm:gap-5">
           {testimonials.slice(0, 3).map((t, idx) => (
             <motion.div
               key={t.name}
@@ -1335,7 +1363,10 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32 px-4 sm:px-6">
+    <section
+      id="contact"
+      className="scroll-mt-20 sm:scroll-mt-28 py-8 sm:py-28 px-4 sm:px-6"
+    >
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Let's Work Together"
@@ -1347,7 +1378,7 @@ export function Contact() {
           }
         />
 
-        <div className="mt-12 grid lg:grid-cols-5 gap-6">
+        <div className="mt-7 sm:mt-12 grid lg:grid-cols-5 gap-5 sm:gap-6">
           {/* Info */}
           <div className="lg:col-span-2 space-y-4">
             {[
@@ -1514,8 +1545,8 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="px-4 sm:px-6 pb-10">
-      <div className="mx-auto max-w-7xl pt-10 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <footer className="px-4 sm:px-6 pt-4 pb-8 sm:pb-10">
+      <div className="mx-auto max-w-7xl pt-6 sm:pt-10 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="font-display text-xl font-bold tracking-tight"

@@ -47,10 +47,21 @@ export function Navbar() {
   }, [open]);
 
   const go = (id: string) => {
+    document.body.style.overflowY = "";
     setOpen(false);
-    document
-      .getElementById(id)
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        const header = document.querySelector("header");
+        const headerHeight = header ? header.offsetHeight + 16 : 80;
+        const rect = el.getBoundingClientRect();
+        const top = rect.top + window.scrollY - headerHeight;
+        window.scrollTo({
+          top: Math.max(0, top),
+          behavior: "smooth",
+        });
+      }
+    }, 60);
   };
 
   return (
