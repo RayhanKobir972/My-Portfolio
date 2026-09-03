@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Build output and generated files
+dist/
+.output/
+.tanstack/
+.nitro/
+.vinxi/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and runtime files
+*.log
+logs/
+*.pid
+*.seed
+*.pid.lock
+
+# Tool caches and coverage
+.cache/
+.eslintcache
+.vite/
+coverage/
+
+# Local editor and operating system files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
