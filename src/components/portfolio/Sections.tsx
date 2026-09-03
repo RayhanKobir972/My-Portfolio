@@ -63,10 +63,10 @@ import {
   Code,
   Package,
 } from "lucide-react";
-import profile from "@/assets/Rayhan_Potrait.png";
-import p1 from "@/assets/project-1.jpg";
-import p2 from "@/assets/project-2.jpg";
-import p3 from "@/assets/project-3.jpg";
+import profile from "../../assets/Rayhan_Potrait.png";
+import p1 from "../../assets/project-1.jpg";
+import p2 from "../../assets/project-2.jpg";
+import p3 from "../../assets/project-3.jpg";
 
 /* ------------------------------------------------------------------ */
 /* Brand icons (simple-icons + inlined SVGs for missing brands)       */
@@ -1402,6 +1402,7 @@ export function Contact() {
           <form
             onSubmit={submit}
             className="lg:col-span-3 glass rounded-3xl border border-white/5 p-6 sm:p-8 space-y-4"
+            suppressHydrationWarning
           >
             <div className="grid sm:grid-cols-2 gap-4">
               <Field
@@ -1433,6 +1434,7 @@ export function Contact() {
                 rows={5}
                 className="w-full rounded-2xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-[var(--accent-cyan)]/60 focus:ring-2 focus:ring-[var(--accent-cyan)]/20 transition-colors resize-none"
                 placeholder="Tell me about your project..."
+                suppressHydrationWarning
               />
               {errors.message && (
                 <p className="mt-1 text-xs text-red-400">{errors.message}</p>
@@ -1489,6 +1491,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         className="w-full rounded-2xl bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-[var(--accent-cyan)]/60 focus:ring-2 focus:ring-[var(--accent-cyan)]/20 transition-colors"
         placeholder={label}
+        suppressHydrationWarning
       />
       {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
     </div>
@@ -1526,7 +1529,7 @@ export function Footer() {
             </a>
           ))}
         </div>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs text-muted-foreground" suppressHydrationWarning>
           © {new Date().getFullYear()} Rayhan Ahmed. All rights reserved.
         </p>
       </div>

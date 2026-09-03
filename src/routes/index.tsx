@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BackgroundFX, CursorGlow } from "@/components/portfolio/BackgroundFX";
-import { Navbar } from "@/components/portfolio/Navbar";
+import { BackgroundFX, CursorGlow } from "../components/portfolio/BackgroundFX";
+import { Navbar } from "../components/portfolio/Navbar";
 import {
   Hero,
   Stats,
@@ -12,7 +12,7 @@ import {
   Testimonials,
   Contact,
   Footer,
-} from "@/components/portfolio/Sections";
+} from "../components/portfolio/Sections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
