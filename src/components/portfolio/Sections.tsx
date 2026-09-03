@@ -123,9 +123,9 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-36 pb-20 sm:pt-44 sm:pb-28 px-4 sm:px-6"
+      className="relative pt-28 pb-16 sm:pt-40 sm:pb-28 px-4 sm:px-6 overflow-hidden sm:overflow-visible"
     >
-      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="mx-auto max-w-7xl grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* Left */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -141,52 +141,48 @@ export function Hero() {
             Available for Freelance
           </div>
 
-          <h1 className="mt-6 font-display font-bold leading-[1.05] text-[clamp(2.25rem,7vw,4.5rem)]">
+          <h1 className="mt-5 sm:mt-6 font-display font-bold leading-[1.08] text-[clamp(2.1rem,6.5vw,4.5rem)]">
             Hi, I'm <br />
             <span className="text-gradient">Md. Rayhan Kobir</span>
           </h1>
-          <p className="mt-5 text-lg sm:text-xl font-semibold text-foreground">
+          <p className="mt-4 sm:mt-5 text-lg sm:text-xl font-semibold text-foreground">
             WordPress Developer{" "}
-            {/* <span className="text-muted-foreground font-normal">&</span>{" "}
-            UI/UX Designer */}
           </p>
-          <p className="mt-4 max-w-lg text-base text-muted-foreground leading-relaxed">
+          <p className="mt-3 sm:mt-4 max-w-lg text-sm sm:text-base text-muted-foreground leading-relaxed">
             I craft modern, responsive WordPress websites and beautiful user
             interfaces that drive real results — fast, accessible, and built to
             convert.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-7 sm:mt-8 flex flex-wrap gap-3">
             <button
               onClick={() => goTo("projects")}
-              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-primary px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_40px_-8px_rgba(6,182,212,0.7)] transition-transform hover:-translate-y-0.5"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-primary px-5 sm:px-6 py-3 sm:py-3.5 text-sm font-semibold text-white shadow-[0_0_40px_-8px_rgba(6,182,212,0.7)] transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
             >
               View My Work
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </button>
             <button
               onClick={() => goTo("contact")}
-              className="group inline-flex items-center gap-2 rounded-xl glass px-6 py-3.5 text-sm font-semibold text-foreground border border-white/10 hover:border-[var(--accent-cyan)]/40 transition-colors"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl glass px-5 sm:px-6 py-3 sm:py-3.5 text-sm font-semibold text-foreground border border-white/10 hover:border-[var(--accent-cyan)]/40 transition-colors active:scale-[0.98]"
             >
               <MessageCircle className="h-4 w-4 text-[var(--accent-cyan)]" />
               Contact Me
             </button>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-8 sm:mt-10">
             <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">
               Follow me on
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2.5 sm:gap-3">
               {[
-                { Icon: Mail, href: "https://rayhankobir972@gmail.com" },
+                { Icon: Mail, href: "mailto:rayhankobir972@gmail.com" },
                 { Icon: Github, href: "https://github.com/RayhanKobir972" },
                 {
                   Icon: Linkedin,
                   href: "https://linkedin.com/in/rayhan-kobir972",
                 },
-                // { Icon: Dribbble, href: "https://dribbble.com" },
-                // { Icon: Twitter, href: "https://twitter.com" },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
@@ -207,21 +203,21 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.1 }}
-          className="relative h-[540px] sm:h-[600px] flex items-center justify-center"
+          className="relative w-full max-w-[480px] mx-auto h-[350px] xs:h-[400px] sm:h-[500px] lg:h-[580px] flex items-center justify-center overflow-visible"
         >
           {/* Glow ring */}
-          <div className="absolute inset-0 grid place-items-center">
-            <div className="h-[440px] w-[440px] sm:h-[540px] sm:w-[540px] rounded-full bg-gradient-primary opacity-30 blur-3xl animate-pulse-glow" />
+          <div className="absolute inset-0 grid place-items-center pointer-events-none">
+            <div className="h-[260px] w-[260px] xs:h-[320px] xs:w-[320px] sm:h-[440px] sm:w-[440px] lg:h-[520px] lg:w-[520px] rounded-full bg-gradient-primary opacity-30 blur-3xl animate-pulse-glow" />
           </div>
-          <div className="absolute inset-0 grid place-items-center">
-            <div className="relative h-[420px] w-[420px] sm:h-[480px] sm:w-[480px] rounded-full">
+          <div className="absolute inset-0 grid place-items-center pointer-events-none">
+            <div className="relative h-[240px] w-[240px] xs:h-[290px] xs:w-[290px] sm:h-[400px] sm:w-[400px] lg:h-[460px] lg:w-[460px] rounded-full">
               <div
                 className="absolute inset-0 rounded-full border border-[var(--accent-cyan)]/30 animate-spin-slow"
-                style={{ boxShadow: "inset 0 0 60px rgba(6,182,212,0.15)" }}
+                style={{ boxShadow: "inset 0 0 40px rgba(6,182,212,0.15)" }}
               />
-              <div className="absolute inset-3 rounded-full border border-white/5" />
+              <div className="absolute inset-2 sm:inset-3 rounded-full border border-white/5" />
               <div
-                className="absolute -inset-2 rounded-full border border-dashed border-white/10 animate-spin-slow"
+                className="absolute -inset-1.5 sm:-inset-2 rounded-full border border-dashed border-white/10 animate-spin-slow"
                 style={{
                   animationDirection: "reverse",
                   animationDuration: "30s",
@@ -235,7 +231,7 @@ export function Hero() {
             alt="Rayhan Kobir portrait"
             width={1024}
             height={1024}
-            className="relative z-10 h-[420px] w-[420px] sm:h-[480px] sm:w-[480px] object-cover rounded-full"
+            className="relative z-10 h-[240px] w-[240px] xs:h-[290px] xs:w-[290px] sm:h-[400px] sm:w-[400px] lg:h-[460px] lg:w-[460px] object-cover rounded-full"
             style={{
               maskImage: "radial-gradient(circle, black 70%, transparent 100%)",
             }}
@@ -243,23 +239,29 @@ export function Hero() {
 
           {/* Floating cards */}
           <FloatCard
-            className="top-4 -right-2 sm:right-4"
+            className="top-1 sm:top-4 -right-1 sm:right-2 lg:right-4"
             delay={0.4}
-            icon={<Briefcase className="h-4 w-4 text-[var(--accent-cyan)]" />}
+            icon={
+              <Briefcase className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[var(--accent-cyan)]" />
+            }
             title="1+"
-            subtitle="Years of Experience"
+            subtitle="Years Experience"
           />
           <FloatCard
-            className="bottom-12 -left-2 sm:left-4"
+            className="bottom-8 sm:bottom-12 -left-1 sm:left-2 lg:left-4"
             delay={0.6}
-            icon={<Code2 className="h-4 w-4 text-[var(--accent-cyan)]" />}
+            icon={
+              <Code2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[var(--accent-cyan)]" />
+            }
             title="Clean Code"
-            subtitle="Scalable Solutions"
+            subtitle="Scalable Sites"
           />
           <FloatCard
-            className="bottom-2 right-2 sm:right-10"
+            className="bottom-0 sm:bottom-2 right-1 sm:right-6 lg:right-10"
             delay={0.8}
-            icon={<Zap className="h-4 w-4 text-[var(--accent-cyan)]" />}
+            icon={
+              <Zap className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[var(--accent-cyan)]" />
+            }
             title="Fast"
             subtitle="Performance"
           />
@@ -290,18 +292,18 @@ function FloatCard({
       className={`absolute z-20 ${className}`}
     >
       <div
-        className="glass rounded-2xl border border-white/10 px-4 py-3 min-w-[160px] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)] animate-float-y"
+        className="glass rounded-xl sm:rounded-2xl border border-white/10 px-2.5 py-2 sm:px-4 sm:py-3 min-w-[125px] sm:min-w-[160px] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)] animate-float-y backdrop-blur-xl bg-[#18181b]/85"
         style={{ animationDelay: `${delay}s` }}
       >
-        <div className="flex items-center gap-3">
-          <div className="grid place-items-center h-8 w-8 rounded-lg bg-white/5 border border-white/10">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="grid place-items-center h-7 w-7 sm:h-8 sm:w-8 rounded-lg bg-white/5 border border-white/10 shrink-0">
             {icon}
           </div>
           <div>
-            <div className="text-sm font-semibold text-foreground leading-none">
+            <div className="text-xs sm:text-sm font-semibold text-foreground leading-tight">
               {title}
             </div>
-            <div className="mt-1 text-[11px] text-muted-foreground">
+            <div className="mt-0.5 text-[10px] sm:text-[11px] text-muted-foreground leading-tight">
               {subtitle}
             </div>
           </div>
@@ -316,16 +318,16 @@ function FloatCard({
 /* ------------------------------------------------------------------ */
 const stats = [
   { icon: Smile, value: "50+", label: "Happy Clients" },
-  { icon: Briefcase, value: "80+", label: "Projects Completed" },
+  { icon: Briefcase, value: "80+", label: "Projects Done" },
   { icon: Trophy, value: "1+", label: "Years Experience" },
-  { icon: Star, value: "5+", label: "Awards Received" },
+  { icon: Star, value: "5+", label: "Awards Won" },
 ];
 
 export function Stats() {
   return (
     <section className="px-4 sm:px-6">
       <div className="mx-auto max-w-7xl">
-        <div className="glass rounded-3xl border border-white/5 p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="glass rounded-3xl border border-white/5 p-4 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-6">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
@@ -333,19 +335,21 @@ export function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="flex items-center gap-4"
+              className="flex items-center gap-2.5 sm:gap-4"
             >
               <div
-                className="grid place-items-center h-12 w-12 rounded-2xl bg-gradient-primary/10 border border-[var(--accent-cyan)]/20"
+                className="grid place-items-center h-10 w-10 sm:h-12 sm:w-12 rounded-xl sm:rounded-2xl bg-gradient-primary/10 border border-[var(--accent-cyan)]/20 shrink-0"
                 style={{ background: "rgba(6,182,212,0.08)" }}
               >
-                <s.icon className="h-5 w-5 text-[var(--accent-cyan)]" />
+                <s.icon className="h-4 w-4 sm:h-5 sm:w-5 text-[var(--accent-cyan)]" />
               </div>
-              <div>
-                <div className="font-display text-2xl sm:text-3xl font-bold text-foreground">
+              <div className="min-w-0">
+                <div className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-foreground">
                   {s.value}
                 </div>
-                <div className="text-xs text-muted-foreground">{s.label}</div>
+                <div className="text-[11px] sm:text-xs text-muted-foreground leading-tight truncate">
+                  {s.label}
+                </div>
               </div>
             </motion.div>
           ))}

@@ -41,11 +41,11 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="relative min-h-screen text-foreground">
+    <div className="relative min-h-screen text-foreground w-full max-w-full overflow-x-clip">
       <BackgroundFX />
       <CursorGlow />
       <Navbar />
-      <main>
+      <main className="w-full max-w-full overflow-x-clip">
         <Hero />
         <Stats />
         <About />
